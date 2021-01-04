@@ -2,7 +2,7 @@
 
 PyPad is a university project - the tiny copy of default Windows notepad build with Python and Tkinter.
 
-Functionality:
+#### Functionality:
 
  - **Program:**
 
@@ -22,3 +22,17 @@ Functionality:
    
    + Encrypt file
    + Decrypt file
+
+
+### To-do
+
+- [ ] Fix onmousewheel event
+- [ ] Add status line
+- [ ] Save user's settings
+- [ ] Add logs
+- [ ] Add horizontal scroll
+
+
+### Screenshots
+
+![Screenshot](https://imgur.com/vqfDi6j.jpg)
