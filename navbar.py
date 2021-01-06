@@ -8,13 +8,13 @@ class Navbar(tk.Frame):
         parent.root.config(menu=navbar)
 
         file_menu = tk.Menu(navbar, tearoff=0)
-        file_menu.add_command(label="New", accelerator='Ctrl+N')
+        file_menu.add_command(label="New", accelerator='Ctrl+N', command=parent.new_file)
         file_menu.add_command(label="Open", accelerator='Ctrl+O', command=parent.open_file)
         file_menu.add_command(label="Close", state='disabled', command=parent.close_file)
         file_menu.add_command(label="Save ", accelerator='Ctrl+S', command=parent.save_file)
-        file_menu.add_command(label="Save As", accelerator='Ctrl+Shift+S')
+        file_menu.add_command(label="Save As", accelerator='Ctrl+Shift+S', command=parent.save_as_file)
         file_menu.add_separator()
-        file_menu.add_command(label="Exit")
+        file_menu.add_command(label="Exit", command=parent.exit_from_app)
 
         edit_menu = tk.Menu(navbar, tearoff=0)
         edit_menu.add_command(label="Cut", accelerator='Ctrl+X')
