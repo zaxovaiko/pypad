@@ -1,22 +1,31 @@
 # PyPad - secure notepad
 
-PyPad is a university project - the tiny copy of default Windows notepad build with Python and Tkinter.
+PyPad is a university project - the tiny copy of default Windows notepad with new features build with Python and Tkinter.
 
 #### Functionality:
 
- - **Program:**
+ - Program:
 
    + Opening files
    + Saving files
    + Closing editor
    + Choosing directory
 
- - **Editor:**
+ - Editor:
   
-   + Repalce
+   + Replace
    + Find
    + Line numbering
    + Word count
+
+ - Theme:
+
+   + Color
+   + Font
+   + Zoom
+     + Zoom in
+     + Zoom out
+     + Zoom reset
 
  - Security:
    
@@ -29,8 +38,7 @@ PyPad is a university project - the tiny copy of default Windows notepad build w
 - [ ] Fix onmousewheel event
 - [ ] Add status line
 - [ ] Save user's settings
-- [ ] Add logs
-- [ ] Add horizontal scroll
+- [ ] Add logging
 
 
 ### Screenshots
