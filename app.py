@@ -107,8 +107,7 @@ class App(tk.Frame):
 
     def on_mouse_click(self, e):
         if hasattr(self, 'find_position'):
-            self.textarea.tag_remove(
-                'highlightline', self.find_position[0], self.find_position[1])
+            self.textarea.tag_remove('highlightline', self._get_cursor_position(*self.find_position[0]), self._get_cursor_position(*self.find_position[1]))
 
     def shortcut_binding(self):
         self.textarea.bind('<KeyRelease>', self.text_modified)
@@ -270,33 +269,36 @@ class App(tk.Frame):
         t.grid_columnconfigure(1, weight=1)
         t.mainloop()
 
+    def _get_cursor_position(self, ln, col):
+        return f'{ln}.{col}'
+
     def find(self):
         if self.c_reg_v.get() == 1:
             pass
         else:
             if hasattr(self, 'find_position'):
-                self.textarea.tag_remove(
-                    'highlightline', self.find_position[0], self.find_position[1])
-            try:
-                occurence = self.textarea.get(
-                    '1.0', 'end')[self.prev_occurence:].index(self.find_v.get()) + self.prev_occurence
-                self.prev_occurence = occurence + 1
-                line = self.textarea.get('1.0', 'end')[
-                    :occurence].count('\n') + 1
-                column = self.textarea.get('1.0', 'end')[
-                    :occurence].rindex('\n')
-                self.find_position = (
-                    f'{line}.{occurence - column - 1}', f'{line}.{occurence - column + len(self.find_v.get()) - 1}')
-                self.textarea.tag_add(
-                    'highlightline', self.find_position[0], self.find_position[1])
-                self.textarea.see(self.find_position[0])
-                self.linenumberingarea.see(f'{line}.0')
-                # TODO: Add scroll to that position
-            except:
-                self.prev_occurence = 0
-                messagebox.showerror(
-                    title='Find', message='Substring was not found')
+                self.textarea.tag_remove('highlightline', self._get_cursor_position(*self.find_position[0]), self._get_cursor_position(*self.find_position[1]))
 
+            text = self.textarea.get('1.0', 'end-1c')
+            was_found = False
+
+            for i, ln in enumerate(text.split('\n')):
+                if (not hasattr(self, 'find_position')) or ((i + 1) > self.find_position[0][0] and self.find_v.get() in ln):
+                    line = i + 1
+                    column = ln.index(self.find_v.get())
+                    was_found = True
+                    break
+
+            if not was_found:
+                self.find_position = ((0, 0), (0, 0))
+                return messagebox.showerror(title='Find', message='Substring was not found')
+
+            self.find_position = ((line, column), (line, column + len(self.find_v.get())))
+            self.textarea.tag_add('highlightline', self._get_cursor_position(*self.find_position[0]), self._get_cursor_position(*self.find_position[1]))
+            
+            self.textarea.see(self._get_cursor_position(*self.find_position[0]))
+            self.linenumberingarea.see(f'{line}.0')
+        
     def find_window(self):
         t = tk.Toplevel(self.root)
         t.title('Find')
