@@ -32,13 +32,22 @@ PyPad is a university project - the tiny copy of default Windows notepad with ne
    + Encrypt file
    + Decrypt file
 
+ - Help:
+  
+   + Version
+   + About
+
 
 ### To-do
 
 - [ ] Fix onmousewheel event
+- [ ] Add files encryption
 - [ ] Add status line
 - [ ] Save user's settings
 - [ ] Add logging
+- [ ] Add multiple files opening
+- [ ] Add multy lang support
+- [ ] Rewrite README
 
 
 ### Screenshots
