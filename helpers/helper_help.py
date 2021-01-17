@@ -1,5 +1,6 @@
 from tkinter import messagebox
 
+
 class HelpHelper:
     @staticmethod
     def show_version():

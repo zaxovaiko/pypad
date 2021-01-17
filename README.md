@@ -48,6 +48,7 @@ PyPad is a university project - the tiny copy of default Windows notepad with ne
 - [ ] Add multiple files opening
 - [ ] Add multy lang support
 - [ ] Rewrite README
+- [ ] Make it possible to use OOP correctly
 
 
 ### Screenshots
