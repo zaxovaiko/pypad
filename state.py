@@ -16,6 +16,8 @@ class State:
     is_saved = False
 
     find_position = CONFIG['DEFAULT_START_POSITION']
+    find_word = False
+    find_word_regex_counter = 0
 
     encrypt_method = 'AES'
     generated_key_filename = False
