@@ -31,5 +31,6 @@ CONFIG = {
     "ENCRYPT_WINDOW_TITLE": 'Encrypt file',
     "DECRYPT_WINDOW_TITLE": 'Decrypt file',
     "DEFAULT_START_POSITION": ((1, 0), (1, -1)),
-    "ECNRYPTION_METHODS": ['AES', '3DES']
+    "DEFAULT_ENCRYPTION_METHOD": "AES",
+    "ENCRYPTION_METHODS": ['AES', 'Triple DES', 'Salsa20']
 }

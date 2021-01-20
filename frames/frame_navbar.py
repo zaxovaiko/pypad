@@ -38,6 +38,8 @@ class FrameNavbar(tk.Frame):
         self.edit_menu.add_separator()
         self.edit_menu.add_command(label="Replace", accelerator='Ctrl+R', command=self.edit_helper.show_replace_window)
         self.edit_menu.add_command(label="Find", accelerator='Ctrl+F', command=self.edit_helper.show_find_window)
+        self.edit_menu.add_separator()
+        self.edit_menu.add_command(label="Time/Date", accelerator='F5', command=self.edit_helper.insert_time_and_date)
 
         # Security menu ------------------------------------
         self.security_menu = tk.Menu(self.menu, tearoff=0)

@@ -86,7 +86,7 @@ class FileHelper:
         self.write_to_file()
 
     def save_as_file(self, e=None):
-        ans = filedialog.asksaveasfilename(parent=self.parent, defaultextension='.txt', filetypes=CONFIG['DEFAULT_FILETYPES'], initialfile=State.filename)
+        ans = filedialog.asksaveasfilename(parent=self.parent, defaultextension='.txt', filetypes=CONFIG['DEFAULT_FILETYPES'], initialfile=get_filename_from_path(State.filename))
         if ans:
             State.filename = ans
             self.write_to_file()
@@ -95,8 +95,8 @@ class FileHelper:
         with open(State.filename, 'w', encoding='utf-8') as f:
             f.write(self.parent.textarea.get('1.0', 'end-1c'))
             f.close()
-            self.update_title(get_filename_from_path(State.filename))
             State.is_modified = False
+            self.update_title(get_filename_from_path(State.filename))
     
     def update_title(self, filename):
         self.parent.root.title(f'{filename} - {CONFIG["APP_NAME"]}')

@@ -31,6 +31,14 @@ class ThemeHelper:
             State.linenumbering_color = rgb_to_hex([int(abs(i - 30)) for i in color[0]])
             self.frame_color.body_color_label.config(text=f'Background color: {State.background_color}')
 
+    def reset_theme(self):
+        State.background_color = CONFIG['DEFAULT_BACKGROUND_COLOR']
+        State.foreground_color = CONFIG['DEFAULT_FOREGROUND_COLOR']
+        State.linenumbering_color = CONFIG['DEFAULT_LINENUMBERINGAREA_BACKGROUND_COLOR']
+
+        self.frame_color.body_color_label.config(text=f'Background color: {State.background_color}')
+        self.frame_color.text_color_label.config(text=f'Foreground color: {State.foreground_color}')
+
     def choose_foreground_color(self):
         color = colorchooser.askcolor()
         if color[1]:

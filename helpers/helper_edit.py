@@ -5,6 +5,7 @@ from tkinter import messagebox
 from frames.frame_replace import FrameReplace
 from frames.frame_find import FrameFind
 from state import State
+from datetime import datetime
 
 
 class EditHelper:
@@ -15,6 +16,7 @@ class EditHelper:
         self.parent.textarea.bind('<Button-1>', self.on_mouse_click)
         self.parent.textarea.bind('<Control-r>', lambda e: self.show_replace_window())
         self.parent.textarea.bind('<Control-f>', lambda e: self.show_find_window())
+        self.parent.textarea.bind('<F5>', lambda e: self.insert_time_and_date())
 
     def show_replace_window(self):
         self.frame_replace = FrameReplace(root=self.parent.root, helper=self)
@@ -23,6 +25,9 @@ class EditHelper:
     def show_find_window(self):
         self.frame_find = FrameFind(root=self.parent.root, helper=self)
         self.frame_find.run()
+
+    def insert_time_and_date(self):
+        self.parent.textarea.insert('insert', datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
 
     def find_replace(self, replace_all=False):
         occurrences = re.findall(self.frame_replace.find_v.get(), self.parent.textarea.get('1.0', 'end'), flags=re.M) \
