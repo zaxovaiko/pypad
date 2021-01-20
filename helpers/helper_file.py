@@ -16,6 +16,7 @@ class FileHelper:
         self.parent.textarea.bind('<Control-Shift-s>', self.save_as_file)
 
         self.parent.textarea.bind('<KeyRelease>', self.text_modified)
+        self.parent.textarea.bind('<ButtonRelease>', self.set_cursor_position)
         self.parent.textarea.bind('<MouseWheel>', self.on_mousewheel)
         self.parent.textarea.bind('<Shift-MouseWheel>', self.scroll_horizontaly)
 
@@ -25,12 +26,18 @@ class FileHelper:
 
     def yscroll(self, *args):
         self.parent.textarea.vbar.set(*args)
-    
+
+    def set_cursor_position(self, e=None):
+        l, c = self.parent.textarea.index('insert').split('.')
+        self.parent.logs_area.cursor_label.config(text=f'Ln {l}, Col {c}')
+
     def yview(self, *args):
         self.parent.textarea.yview(*args)
         self.parent.linenumberingarea.yview(*args)
     
     def text_modified(self, e=None):
+        self.set_cursor_position(e)
+
         State.is_modified = True
         self.update_title(f'*{get_filename_from_path(State.filename)}')
         self.navbar.file_menu.entryconfig(2, state='normal')

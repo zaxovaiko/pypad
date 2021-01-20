@@ -78,6 +78,7 @@ class ThemeHelper:
     def update_font(self):
         self.parent.textarea.config(font=(State.font_family, State.font_size))
         self.parent.linenumberingarea.config(font=(State.font_family, State.font_size))
+        self.parent.logs_area.zoom_label.config(text='{:.2f}%'.format(State.font_size * 100 / CONFIG["DEFAULT_FONT_SIZE"]))
 
     def increase_fontsize(self, e=None, scale=1):
         if State.font_size + scale > 300:

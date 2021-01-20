@@ -12,6 +12,7 @@ class State:
     foreground_color = CONFIG['DEFAULT_FOREGROUND_COLOR']
     linenumbering_color = CONFIG['DEFAULT_LINENUMBERINGAREA_BACKGROUND_COLOR']
 
+    show_status_bar = True
     is_modified = False
     is_saved = False
 

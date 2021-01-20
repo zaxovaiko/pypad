@@ -1,4 +1,5 @@
 import tkinter as tk
+from state import State
 from helpers.helper_help import HelpHelper
 from helpers.helper_file import FileHelper
 from helpers.helper_edit import EditHelper
@@ -47,6 +48,9 @@ class FrameNavbar(tk.Frame):
         self.security_menu.add_command(label="Decrypt file", command=self.security_helper.show_decrypt_window)
 
         # Theme menu ------------------------------------
+        self.show_status_bar = tk.BooleanVar()
+        self.show_status_bar.set(State.show_status_bar)
+
         self.theme_menu = tk.Menu(self.menu, tearoff=0)
         self.theme_sub_menu = tk.Menu(self.theme_menu, tearoff=0)
 
@@ -58,6 +62,7 @@ class FrameNavbar(tk.Frame):
         self.theme_menu.add_command(label="Font", command=self.theme_helper.show_font_window)        
         self.theme_menu.add_cascade(label='Zoom', menu=self.theme_sub_menu)
         self.theme_menu.add_separator()
+        self.theme_menu.add_checkbutton(label="Status bar", onvalue=1, offvalue=0, variable=self.show_status_bar, command=self.toggle_status_bar)
         self.theme_menu.add_command(label="Save preferences", command=self.theme_helper.save_preferences)
 
         # Help menu ------------------------------------
@@ -70,3 +75,10 @@ class FrameNavbar(tk.Frame):
         self.menu.add_cascade(label='Security', menu=self.security_menu)
         self.menu.add_cascade(label='Theme', menu=self.theme_menu)
         self.menu.add_cascade(label='Help', menu=self.help_menu)
+
+    def toggle_status_bar(self):
+        if State.show_status_bar:
+            self.parent.logs_area.grid_remove()
+        else:
+            self.parent.logs_area.grid()
+        State.show_status_bar = not State.show_status_bar

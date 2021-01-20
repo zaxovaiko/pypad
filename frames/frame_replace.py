@@ -9,6 +9,7 @@ class FrameReplace(tk.Toplevel):
         self.root = root
         self.helper = helper
 
+        self.iconbitmap(r'icon.ico')
         self.title(CONFIG['REPLACE_WINDOW_TITLE'])
         self.resizable(0, 0)
         self.focus_force()

@@ -3,6 +3,7 @@ from tkinter import scrolledtext
 from config import CONFIG
 from state import State
 from frames.frame_navbar import FrameNavbar
+from frames.frame_logs import FrameLogs
 
 
 class FrameTextarea(tk.Frame):
@@ -31,6 +32,11 @@ class FrameTextarea(tk.Frame):
 
         self.linenumberingarea.tag_configure('line', justify='right')
         self.linenumberingarea.tag_add('line', '1.0', 'end')
+
+        self.logs_area = FrameLogs(self)
+        self.logs_area.grid(row=2, column=0, columnspan=2, sticky='nsew')
+        if not State.show_status_bar:
+            self.logs_area.grid_remove()
 
         root.grid_columnconfigure(0, weight=0)
         root.grid_columnconfigure(1, weight=1)

@@ -6,6 +6,7 @@ class FrameFind(tk.Toplevel):
     def __init__(self, root=None, helper=None):
         super().__init__(root)
 
+        self.iconbitmap(r'icon.ico')
         self.root = root
         self.helper = helper
 
