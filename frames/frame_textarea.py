@@ -19,12 +19,12 @@ class FrameTextarea(tk.Frame):
         self.scrollbar_h.grid(row=1, column=1, sticky='ew')
 
         # Main textarea
-        self.textarea = scrolledtext.ScrolledText(root, font=(State.font_family, State.font_size), borderwidth=0, highlightthickness=0, wrap='none', xscrollcommand=self.scrollbar_h.set)
+        self.textarea = scrolledtext.ScrolledText(root, font=(State.font_family, State.font_size), borderwidth=0, highlightthickness=0, wrap='none', xscrollcommand=self.scrollbar_h.set, background=State.background_color, foreground=State.foreground_color)
         self.textarea.grid(row=0, column=1, sticky='nsew')
         self.textarea.tag_configure('highlightline', background=CONFIG['DEFAULT_HIGHLIGHTLINE_BACKGROUND'], relief='raised', foreground=CONFIG['DEFAULT_HIGHLIGHTLINE_FOREGROUND'])
 
         # Line numbering area
-        self.linenumberingarea = tk.Text(root, font=(State.font_family, State.font_size), borderwidth=0, background=CONFIG['DEFAULT_LINENUMBERINGAREA_BACKGROUND_COLOR'], foreground=CONFIG['DEFAULT_LINENUMBERINGAREA_FOREGROUND_COLOR'], width=1, padx=5)
+        self.linenumberingarea = tk.Text(root, font=(State.font_family, State.font_size), borderwidth=0, background=State.linenumbering_color, foreground=State.foreground_color, width=1, padx=5)
         self.linenumberingarea.grid(row=0, column=0, sticky='ns')
         self.linenumberingarea.insert('1.0', '1')
         self.linenumberingarea.config(state='disabled')

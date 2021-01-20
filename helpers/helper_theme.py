@@ -1,4 +1,3 @@
-import json
 import pickle
 from tkinter import colorchooser
 from tkinter import messagebox
@@ -37,7 +36,6 @@ class ThemeHelper:
     def save_preferences():
         with open(CONFIG['PREFERENCES_FILENAME'], 'wb') as f:
             pickle.dump({ k: v for k, v in vars(State).items() if not k.startswith('_') }, f)
-            # f.write(json.dumps({ k: v for k, v in State.__dict__.items() if not k.startswith('__') }))
             messagebox.showinfo(title='Preferences', message='Your application state was saved successfully.')
 
     def reset_theme(self):
