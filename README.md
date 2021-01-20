@@ -26,6 +26,7 @@ PyPad is a university project - the tiny copy of default Windows notepad with ne
      + Zoom in
      + Zoom out
      + Zoom reset
+   + Save preferences
 
  - Security:
    
@@ -41,14 +42,11 @@ PyPad is a university project - the tiny copy of default Windows notepad with ne
 ### To-do
 
 - [ ] Fix onmousewheel event
-- [ ] Add files encryption
 - [ ] Add status line
-- [ ] Save user's settings
+- [x] Save user's settings
 - [ ] Add logging
 - [ ] Add multiple files opening
 - [ ] Add multy lang support
-- [ ] Rewrite README
-- [ ] Make it possible to use OOP correctly
 
 
 ### Screenshots

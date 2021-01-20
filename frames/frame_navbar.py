@@ -57,6 +57,8 @@ class FrameNavbar(tk.Frame):
         self.theme_menu.add_command(label="Color", command=self.theme_helper.show_color_window)
         self.theme_menu.add_command(label="Font", command=self.theme_helper.show_font_window)        
         self.theme_menu.add_cascade(label='Zoom', menu=self.theme_sub_menu)
+        self.theme_menu.add_separator()
+        self.theme_menu.add_command(label="Save preferences", command=self.theme_helper.save_preferences)
 
         # Help menu ------------------------------------
         self.help_menu = tk.Menu(self.menu, tearoff=0)

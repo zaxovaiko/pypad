@@ -1,3 +1,5 @@
+import json
+import pickle
 from tkinter import colorchooser
 from tkinter import messagebox
 from utils import rgb_to_hex
@@ -30,6 +32,13 @@ class ThemeHelper:
             State.background_color = color[1]
             State.linenumbering_color = rgb_to_hex([int(abs(i - 30)) for i in color[0]])
             self.frame_color.body_color_label.config(text=f'Background color: {State.background_color}')
+
+    @staticmethod
+    def save_preferences():
+        with open(CONFIG['PREFERENCES_FILENAME'], 'wb') as f:
+            pickle.dump({ k: v for k, v in vars(State).items() if not k.startswith('_') }, f)
+            # f.write(json.dumps({ k: v for k, v in State.__dict__.items() if not k.startswith('__') }))
+            messagebox.showinfo(title='Preferences', message='Your application state was saved successfully.')
 
     def reset_theme(self):
         State.background_color = CONFIG['DEFAULT_BACKGROUND_COLOR']
