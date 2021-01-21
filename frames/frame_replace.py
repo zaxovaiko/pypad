@@ -9,7 +9,6 @@ class FrameReplace(tk.Toplevel):
         self.root = root
         self.helper = helper
 
-        self.iconbitmap(r'icon.ico')
         self.title(CONFIG['REPLACE_WINDOW_TITLE'])
         self.resizable(0, 0)
         self.focus_force()
@@ -43,6 +42,3 @@ class FrameReplace(tk.Toplevel):
         self.cancel_btn.grid(row=2, column=2, sticky='nsew', padx=10, pady=(0, 10))
 
         self.grid_columnconfigure(1, weight=1)
-    
-    def run(self):
-        self.mainloop()

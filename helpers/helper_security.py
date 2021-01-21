@@ -19,11 +19,9 @@ class SecurityHelper:
 
     def show_encrypt_window(self):
         self.frame_encrypt = FrameEncrypt(root=self.parent.root, helper=self)
-        self.frame_encrypt.run()
 
     def show_decrypt_window(self):
         self.frame_decrypt = FrameDecrypt(root=self.parent.root, helper=self)
-        self.frame_decrypt.run()
 
     def on_listbox_select(self, e=None):
         selection = e.widget.curselection()
@@ -79,13 +77,13 @@ class SecurityHelper:
                 try:
                     if State.encrypt_method == 'AES':
                         cipher = AES.new(State.generated_key, AES.MODE_EAX, text[:16])
-                        decoded = cipher.decrypt_and_verify(text[32:], text[16:32])
+                        decoded = cipher.decrypt_and_verify(text[32:], text[16:32]).decode()
                     elif State.encrypt_method == 'Triple DES':
                         cipher = DES3.new(State.generated_key, DES3.MODE_CFB)
-                        decoded = cipher.decrypt(text)[len(cipher.iv):]
+                        decoded = cipher.decrypt(text)[len(cipher.iv):].decode()
                     elif State.encrypt_method == 'Salsa20':
                         cipher = Salsa20.new(key=State.generated_key, nonce=text[:8])
-                        decoded = cipher.decrypt(text[8:])
+                        decoded = cipher.decrypt(text[8:]).decode()
                     else:
                         return messagebox.showerror(title='Error', message='Choose algorithm to decode with')
                 except Exception as e:

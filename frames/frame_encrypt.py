@@ -7,7 +7,6 @@ class FrameEncrypt(tk.Toplevel):
     def __init__(self, root=None, helper=None):
         super().__init__(root)
 
-        self.iconbitmap(r'icon.ico')
         self.root = root
         self.helper = helper
 
@@ -42,6 +41,3 @@ class FrameEncrypt(tk.Toplevel):
         self.cancel_btn.grid(row=4, column=3, padx=(5, 10), pady=(0, 10), sticky='we')
 
         self.grid_columnconfigure(0, weight=1)
-
-    def run(self):
-        self.mainloop()

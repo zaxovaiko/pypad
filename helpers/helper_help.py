@@ -1,4 +1,5 @@
 from tkinter import messagebox
+from frames.frame_help import FrameHelp
 
 
 class HelpHelper:
@@ -7,5 +8,5 @@ class HelpHelper:
         messagebox.showinfo('Version', 'v0.0.1')
 
     @staticmethod
-    def show_about():
-        messagebox.showinfo('About', 'PyPad\nProject for Języki Skryptowe\nBased on Tkinter')
+    def show_about(root):
+        FrameHelp(root)

@@ -14,7 +14,6 @@ def main():
                 setattr(State, k, v)
 
     root = tk.Tk()
-    root.iconbitmap(r'icon.ico')
     app = FrameTextarea(root)
     app.mainloop()
 

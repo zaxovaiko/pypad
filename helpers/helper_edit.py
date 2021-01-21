@@ -20,11 +20,9 @@ class EditHelper:
 
     def show_replace_window(self):
         self.frame_replace = FrameReplace(root=self.parent.root, helper=self)
-        self.frame_replace.run()
 
     def show_find_window(self):
         self.frame_find = FrameFind(root=self.parent.root, helper=self)
-        self.frame_find.run()
 
     def insert_time_and_date(self):
         self.parent.textarea.insert('insert', datetime.now().strftime('%d.%m.%Y %H:%M:%S'))

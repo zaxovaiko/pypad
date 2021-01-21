@@ -56,7 +56,7 @@ class FrameNavbar(tk.Frame):
 
         self.theme_sub_menu.add_command(label="Zoom in", accelerator='Ctrl+Plus', command=lambda: self.theme_helper.increase_fontsize(scale=5))
         self.theme_sub_menu.add_command(label="Zoom out", accelerator='Ctrl+Minus', command=lambda: self.theme_helper.decrease_fontsize(scale=5))
-        self.theme_sub_menu.add_command(label="Zoom reset", accelerator='Ctrl+0', command=lambda: self.theme_helper.reset_fontsize())
+        self.theme_sub_menu.add_command(label="Zoom reset", accelerator='Ctrl+0', command=self.theme_helper.reset_fontsize)
 
         self.theme_menu.add_command(label="Color", command=self.theme_helper.show_color_window)
         self.theme_menu.add_command(label="Font", command=self.theme_helper.show_font_window)        
@@ -67,7 +67,7 @@ class FrameNavbar(tk.Frame):
 
         # Help menu ------------------------------------
         self.help_menu = tk.Menu(self.menu, tearoff=0)
-        self.help_menu.add_command(label="About", command=HelpHelper.show_about)
+        self.help_menu.add_command(label="How to use", command=lambda: HelpHelper.show_about(self.parent))
         self.help_menu.add_command(label="Version", command=HelpHelper.show_version)
 
         self.menu.add_cascade(label='File', menu=self.file_menu)

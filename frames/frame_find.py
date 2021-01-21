@@ -6,7 +6,6 @@ class FrameFind(tk.Toplevel):
     def __init__(self, root=None, helper=None):
         super().__init__(root)
 
-        self.iconbitmap(r'icon.ico')
         self.root = root
         self.helper = helper
 
@@ -33,6 +32,3 @@ class FrameFind(tk.Toplevel):
         self.cancel_btn.grid(row=2, column=2, sticky='nsew', padx=10, pady=10)
 
         self.grid_columnconfigure(1, weight=1)
-    
-    def run(self):
-        self.mainloop()

@@ -18,6 +18,10 @@ class FrameLogs(tk.Frame):
         self.encoding_label = tk.Label(self, text='utf-8')
         self.encoding_label.grid(row=0, column=2)
 
+        self.words_label = tk.Label(self, text='Words: 0')
+        self.words_label.grid(row=0, column=3)
+
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure(2, weight=1)
+        self.grid_columnconfigure(3, weight=1)

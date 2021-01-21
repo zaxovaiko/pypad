@@ -1,3 +1,4 @@
+import re
 from config import CONFIG
 from utils import get_filename_from_path
 from tkinter import messagebox
@@ -36,7 +37,10 @@ class FileHelper:
         self.parent.linenumberingarea.yview(*args)
     
     def text_modified(self, e=None):
-        self.set_cursor_position(e)
+        if State.show_status_bar:
+            self.set_cursor_position(e)
+            words = len(re.findall('\w+', self.parent.textarea.get('1.0', 'end-1c')))
+            self.parent.logs_area.words_label.config(text=f'Words: {words}')
 
         State.is_modified = True
         self.update_title(f'*{get_filename_from_path(State.filename)}')
